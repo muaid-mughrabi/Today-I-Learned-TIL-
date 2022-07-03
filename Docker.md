@@ -10,3 +10,16 @@
 - To keep things clean, each docker image should perform only one task.
 - docker-compose.yml describes the different services of the application (e.g. web server, database, etc.).
 - `docker-compose up` can be used to run the application, whereas `docker-compose down` can be used to turn off all of its layers at the same time.
+
+# Extras
+## Run GUI Applications in Docker (Windows)
+- Running gui applications on the host machine requires a windows-X server (e.g. vcxsrv).
+- Launch vcxsrv and disable its access control
+- Run `ipconfig` to get the ip adress for wsl
+- Define the `DISPLAY` env variable based on the obtained ip: `set-variable -name DISPLAY -value WSL_IP:0.0`
+- Run the container with `-e DISPLAY=$DISPLAY` argument.
+
+## Allow Container To Access GPU
+- Update NVIDIA drivers (and check for windows updates)!
+- Pass `--gpus all` or `--gpus device=DEVICE_ID` as an argument to docker run.
+- Use the following to test if everything is set up correctly `docker run --rm --gpus all nvidia/cuda:11.0.3-base-ubuntu20.04 nvidia-smi`
