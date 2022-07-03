@@ -1,0 +1,1 @@
+- Cross-correlation can be used to calculate lag between two signals. Cross-correlation is very similar to convolution (dot product between two signals without inversting the filter signal) ([scipy implementation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.correlate.html)).
